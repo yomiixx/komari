@@ -21,7 +21,7 @@ import (
 	"github.com/komari-monitor/komari/internal/eventType"
 	"github.com/komari-monitor/komari/internal/notifier"
 	"github.com/komari-monitor/komari/internal/ws"
-	_ "github.com/patrickmn/go-cache"
+	//"github.com/patrickmn/go-cache"
 )
 
 const (
@@ -217,22 +217,22 @@ func processMessage(conn *ws.SafeConn, message []byte, uuid string) {
 }
 
 func SaveClientReport(uuid string, report common.Report) error {
-	// 只保留最近 30 条，避免无限增长
-    maxHistory := 30
+	// // 只保留最近 30 条，避免无限增长
+ //    maxHistory := 30
     
-    reports, _ := vars.Records.Get(uuid)
-    if reports == nil {
-        reports = []common.Report{}
-    }
+ //    reports, _ := vars.Records.Get(uuid)
+ //    if reports == nil {
+ //        reports = []common.Report{}
+ //    }
     
-    reportList := reports.([]common.Report)
-    reportList = append(reportList, report)
+ //    reportList := reports.([]common.Report)
+ //    reportList = append(reportList, report)
     
-    // 只保留最新的 N 条
-    if len(reportList) > maxHistory {
-        reportList = reportList[len(reportList)-maxHistory:]
-    }
+ //    // 只保留最新的 N 条
+ //    if len(reportList) > maxHistory {
+ //        reportList = reportList[len(reportList)-maxHistory:]
+ //    }
     
-    vars.Records.Set(uuid, reportList, 5*time.Minute) // 设置更短的过期时间
+ //    vars.Records.Set(uuid, reportList, 5*time.Minute) // 设置更短的过期时间
     return nil
 }
