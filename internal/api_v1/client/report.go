@@ -21,7 +21,7 @@ import (
 	"github.com/komari-monitor/komari/internal/eventType"
 	"github.com/komari-monitor/komari/internal/notifier"
 	"github.com/komari-monitor/komari/internal/ws"
-	"github.com/patrickmn/go-cache"
+	_ "github.com/patrickmn/go-cache"
 )
 
 const (
